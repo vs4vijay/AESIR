@@ -1,7 +1,7 @@
 {
-  "name": "parkinglotapi",
+  "name": "nodejs-express-template",
   "version": "1.0.0",
-  "description": "An RESTful Implementation of Parking Lot System",
+  "description": "An RESTful Microservice",
   "main": "src/app.js",
   "scripts": {
     "start": "node src/app.js",

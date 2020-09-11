@@ -1,2 +1,2 @@
-# Parking Lot API
+# NodeJS Express Template
 
