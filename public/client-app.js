@@ -2,7 +2,7 @@
 
 // CONFIGURATION
 const config = {
-  SERVER_ADDRESS: 'http://localhost:9000',
+  SERVER_ADDRESS: '/', // Picks the hosted URL autometically
   FRAME_RATE: 30,
   CUBE_EVENTS: {
     ROTATION_UPDATED: 'cube.rotation_updated',
@@ -56,7 +56,7 @@ function draw() {
   background(backgroundColor);
 
   fill(100);
-  text('FPS: ' + Math.ceil(frameRate()), 180, 290);
+  text('FPS: ' + ceil(frameRate()), 180, 290);
 
   // Paint Color
   // normalMaterial();
