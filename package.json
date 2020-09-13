@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "A Microservice",
   "main": "src/app.js",
+  "engines": {
+    "node": "12.18.x"
+  },
   "scripts": {
     "start": "node src/app.js",
     "dev": "nodemon src/app.js",
