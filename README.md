@@ -1,2 +1,18 @@
-# NodeJS Express Template
+# Realtime Sync
 
+
+
+
+---
+
+### Development Notes
+
+```shell
+
+
+Via WebSockets
+Via WebRTC
+Via Deepstream
+
+
+```

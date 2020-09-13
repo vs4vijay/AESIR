@@ -1,7 +1,7 @@
 {
-  "name": "nodejs-express-template",
+  "name": "realtime-sync",
   "version": "1.0.0",
-  "description": "An RESTful Microservice",
+  "description": "A Microservice",
   "main": "src/app.js",
   "scripts": {
     "start": "node src/app.js",
@@ -14,6 +14,7 @@
   "dependencies": {
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "pino": "^6.5.1"
+    "pino": "^6.5.1",
+    "socket.io": "^2.3.0"
   }
 }
