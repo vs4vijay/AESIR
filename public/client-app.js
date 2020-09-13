@@ -3,6 +3,7 @@
 // CONFIGURATION
 const config = {
   SERVER_ADDRESS: 'http://localhost:9000',
+  FRAME_RATE: 30,
   CUBE_EVENTS: {
     ROTATION_UPDATED: 'cube.rotation_updated',
     COLOR_UPDATED: 'cube.color_updated'
@@ -26,9 +27,9 @@ const cube = {
     Z: 100,
   },
   color: {
-    R: 100,
-    G: 100,
-    B: 100,
+    R: 250,
+    G: 10,
+    B: 10,
   }
 };
 const sliders = {};
@@ -45,12 +46,17 @@ function setup() {
   textFont(font);
   textSize(32);
 
+  frameRate(config.FRAME_RATE);
+
   initUI();
   initSocket();
 }
 
 function draw() {
   background(backgroundColor);
+
+  fill(100);
+  text('FPS: ' + Math.ceil(frameRate()), 180, 290);
 
   // Paint Color
   // normalMaterial();
@@ -67,13 +73,14 @@ function draw() {
   // translate(cube.position.X, cube.position.Y, cube.position.Z);
 
   // Draw Box
-  box(100, 100, 100);
+  stroke(30);
+  box(200, 200, 200);
 }
 
 function initUI() {
   // Create Sliders
   ['X', 'Y', 'Z'].forEach((axis, index) => {
-    sliders[axis] = createSlider(0, 255, 100, 5);
+    sliders[axis] = createSlider(0, 255, 100);
     const posX = 10 * (index * 20 + 1);
     const posY = 10;
     sliders[axis].position(posX, posY);
@@ -116,6 +123,12 @@ function randomizeColor() {
   cube.color.B = random(255);
 
   socket.emit(config.CUBE_EVENTS.COLOR_UPDATED, cube.color);
+}
+
+function mouseClicked(event) {
+  if(event.target.tagName === 'CANVAS') {
+    randomizeColor();
+  }
 }
 
 
