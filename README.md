@@ -1,6 +1,6 @@
 # Realtime Sync
 
-
+Deployed Version: https://realtime-sync.herokuapp.com/
 
 
 ---
@@ -10,9 +10,8 @@
 ```shell
 
 
-Via WebSockets
-Via WebRTC
+Via Socket.io / WebSockets
 Via Deepstream
-
+Via WebRTC
 
 ```
