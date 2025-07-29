@@ -1,8 +1,8 @@
-FROM node:14.15.3-alpine
+FROM node:14.21.3-alpine
 
 WORKDIR /app
 
-COPY package*.json ./
+COPY package.json ./
 
 # USER node
 
@@ -11,7 +11,7 @@ RUN npm install --only=production
 COPY . ./
 # COPY --chown=node:node . ./
 
-ENV APP_PORT 9000
+ENV APP_PORT=9000
 
 EXPOSE ${APP_PORT}
 

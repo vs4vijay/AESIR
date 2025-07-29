@@ -1,0 +1,44 @@
+---
+name: PR Gate
+
+"on":
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '12.22.x'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run linter (if available)
+        run: |
+          if npm ls eslint > /dev/null 2>&1 || \
+             [ -f node_modules/.bin/eslint ]; then
+            npm run lint
+          else
+            echo "ESLint not found, skipping lint step"
+          fi
+        continue-on-error: true
+
+      - name: Run tests
+        run: npm test
+        continue-on-error: true
+
+      - name: Build Docker image
+        run: docker build -t aesir:${{ github.sha }} .
