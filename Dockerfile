@@ -2,14 +2,17 @@ FROM node:14.21.3-alpine
 
 WORKDIR /app
 
+# Copy package files
 COPY package.json ./
 
-# USER node
+# Configure npm for potential SSL issues in CI
+RUN npm config set strict-ssl false && \
+    npm config set registry http://registry.npmjs.org/
 
-RUN npm install --only=production
+# Install production dependencies
+RUN npm install --only=production --no-optional
 
 COPY . ./
-# COPY --chown=node:node . ./
 
 ENV APP_PORT=9000
 
